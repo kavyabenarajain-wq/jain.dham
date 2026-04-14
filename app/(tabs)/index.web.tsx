@@ -137,7 +137,7 @@ export default function MapScreenWeb() {
 const styles = StyleSheet.create({
   container: { flex: 1 },
   header: { paddingHorizontal: 16, paddingTop: 16, paddingBottom: 12 },
-  heading: { fontFamily: 'Poppins-Bold', fontSize: 28 },
+  heading: { fontFamily: 'Geist_700Bold', fontSize: 28 },
   subtext: { fontFamily: 'Inter-Variable', fontSize: 13, marginTop: 4 },
   searchBar: {
     flexDirection: 'row',
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
   searchInput: { flex: 1, fontFamily: 'Inter-Variable', fontSize: 15 },
   chipRow: { marginTop: 12 },
   count: {
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'Geist_600SemiBold',
     fontSize: 15,
     paddingHorizontal: 20,
     paddingTop: 16,

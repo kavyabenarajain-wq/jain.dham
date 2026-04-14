@@ -20,7 +20,7 @@ export default function TabLayout() {
           paddingTop: 8,
         },
         tabBarLabelStyle: {
-          fontFamily: 'Poppins-SemiBold',
+          fontFamily: 'Geist_600SemiBold',
           fontSize: 11,
         },
       }}

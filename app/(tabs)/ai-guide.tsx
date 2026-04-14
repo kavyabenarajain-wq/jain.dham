@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   headerTitle: {
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Geist_700Bold',
     fontSize: 18,
   },
   headerSubtitle: {

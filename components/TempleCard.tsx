@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   name: {
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'Geist_600SemiBold',
     fontSize: 15,
     lineHeight: 20,
   },
@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   badgeText: {
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'Geist_600SemiBold',
     fontSize: 11,
   },
   distance: {
@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   directionsText: {
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'Geist_600SemiBold',
     fontSize: 12,
     color: '#FFFFFF',
   },
@@ -216,7 +216,7 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   compactName: {
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'Geist_600SemiBold',
     fontSize: 13,
     textAlign: 'center',
   },

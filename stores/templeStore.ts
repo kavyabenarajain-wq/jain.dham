@@ -15,6 +15,7 @@ interface TempleState {
   isLoading: boolean;
   savedTempleIds: string[];
   setTemples: (temples: Temple[]) => void;
+  mergeTemples: (temples: Temple[]) => void;
   selectTemple: (temple: Temple | null) => void;
   setFilter: (filter: string) => void;
   setSearchQuery: (query: string) => void;
@@ -34,6 +35,13 @@ export const useTempleStore = create<TempleState>()((set, get) => ({
   savedTempleIds: [],
 
   setTemples: (temples) => set({ temples }),
+  mergeTemples: (incoming) =>
+    set((state) => {
+      const byId = new Map<string, Temple>();
+      for (const t of state.temples) byId.set(t.placeId, t);
+      for (const t of incoming) byId.set(t.placeId, { ...byId.get(t.placeId), ...t });
+      return { temples: Array.from(byId.values()) };
+    }),
   selectTemple: (temple) => set({ selectedTemple: temple }),
   setFilter: (filter) => set({ activeFilter: filter }),
   setSearchQuery: (query) => set({ searchQuery: query }),

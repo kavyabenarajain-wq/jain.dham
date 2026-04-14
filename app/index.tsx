@@ -71,13 +71,13 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   title: {
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Geist_700Bold',
     fontSize: 36,
     color: '#FAF9F5',
     marginBottom: 8,
   },
   subtitle: {
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'Geist_600SemiBold',
     fontSize: 14,
     color: '#B0AEA5',
     textAlign: 'center',

@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   chipText: {
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'Geist_600SemiBold',
     fontSize: 13,
   },
 });

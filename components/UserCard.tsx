@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   name: {
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Geist_700Bold',
     fontSize: 18,
   },
   email: {
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   guestName: {
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Geist_700Bold',
     fontSize: 18,
   },
   guestSubtext: {
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   signInText: {
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'Geist_600SemiBold',
     fontSize: 14,
     color: '#FFFFFF',
   },

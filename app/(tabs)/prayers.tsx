@@ -226,7 +226,7 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
   },
   title: {
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Geist_700Bold',
     fontSize: 28,
   },
   subtitle: {
@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
   },
   cardBody: { flex: 1 },
   cardTitle: {
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'Geist_600SemiBold',
     fontSize: 15,
   },
   cardDevanagari: {
@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   sectBadgeText: {
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'Geist_600SemiBold',
     fontSize: 10,
   },
   categoryBadge: {
@@ -308,7 +308,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
   modalTitle: {
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Geist_700Bold',
     fontSize: 17,
   },
   modalDevanagari: {
@@ -331,7 +331,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   youtubeButtonText: {
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'Geist_600SemiBold',
     fontSize: 15,
     color: '#FFFFFF',
   },
@@ -348,7 +348,7 @@ const styles = StyleSheet.create({
     borderBottomColor: 'transparent',
   },
   tabText: {
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'Geist_600SemiBold',
     fontSize: 13,
   },
   modalContent: {

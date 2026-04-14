@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   title: {
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Geist_700Bold',
     fontSize: 24,
     textAlign: 'center',
     marginBottom: 12,
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   previewTitle: {
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'Geist_600SemiBold',
     fontSize: 14,
   },
   previewSubtitle: {
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   notifyText: {
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'Geist_600SemiBold',
     fontSize: 16,
     color: '#FFFFFF',
   },

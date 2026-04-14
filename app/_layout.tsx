@@ -1,7 +1,13 @@
 import { useEffect } from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { useFonts } from 'expo-font';
+import {
+  useFonts,
+  Geist_400Regular,
+  Geist_500Medium,
+  Geist_600SemiBold,
+  Geist_700Bold,
+} from '@expo-google-fonts/geist';
 import * as SplashScreen from 'expo-splash-screen';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import 'react-native-reanimated';
@@ -22,6 +28,9 @@ function RootNav() {
         <Stack.Screen name="index" />
         <Stack.Screen name="auth" />
         <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="temple/[placeId]" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="live-darshan" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="admin/zones" options={{ animation: 'slide_from_right' }} />
       </Stack>
       <StatusBar style={isDark ? 'light' : 'dark'} />
     </>
@@ -30,8 +39,10 @@ function RootNav() {
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
-    'Poppins-Bold': require('@/assets/fonts/Poppins-Bold.ttf'),
-    'Poppins-SemiBold': require('@/assets/fonts/Poppins-SemiBold.ttf'),
+    Geist_400Regular,
+    Geist_500Medium,
+    Geist_600SemiBold,
+    Geist_700Bold,
     'Inter-Variable': require('@/assets/fonts/Inter-Variable.ttf'),
   });
 

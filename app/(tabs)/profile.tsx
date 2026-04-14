@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -20,6 +20,7 @@ import { useTempleStore } from '@/stores/templeStore';
 import { UserCard } from '@/components/UserCard';
 import { SettingsRow } from '@/components/SettingsRow';
 import { TempleCard } from '@/components/TempleCard';
+import { isUserAdmin } from '@/services/supabaseDb';
 
 const APPEARANCE_OPTIONS = ['Light', 'Dark', 'System'] as const;
 const SAMPRADAYA_OPTIONS = ['All', 'Digambar', 'Shvetambar', 'Sthanakvasi'] as const;
@@ -37,7 +38,17 @@ export default function ProfileScreen() {
     toggleNotifications,
   } = useSettingsStore();
   const { temples, savedTempleIds } = useTempleStore();
+  const user = useAuthStore((s) => s.user);
   const [showAbout, setShowAbout] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    if (!user) {
+      setIsAdmin(false);
+      return;
+    }
+    isUserAdmin(user.uid).then(setIsAdmin);
+  }, [user?.uid]);
 
   const savedTemples = temples.filter((t) => savedTempleIds.includes(t.placeId));
 
@@ -131,6 +142,25 @@ export default function ProfileScreen() {
           )}
         </View>
       )}
+
+      {/* Explore */}
+      <View style={styles.section}>
+        <Text style={[styles.sectionTitle, { color: colors.text }]}>Explore</Text>
+        <View style={[styles.settingsCard, { backgroundColor: colors.surface, borderColor: colors.border }]}>
+          <SettingsRow
+            icon="videocam-outline"
+            label="Live Darshan"
+            onPress={() => router.push('/live-darshan')}
+          />
+          {isAdmin && (
+            <SettingsRow
+              icon="shield-outline"
+              label="Admin: Zone Management"
+              onPress={() => router.push('/admin/zones')}
+            />
+          )}
+        </View>
+      </View>
 
       {/* Settings */}
       <View style={styles.section}>
@@ -231,7 +261,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   screenTitle: {
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Geist_700Bold',
     fontSize: 28,
     paddingHorizontal: 16,
     paddingTop: 16,
@@ -242,7 +272,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   sectionTitle: {
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'Geist_600SemiBold',
     fontSize: 18,
     marginBottom: 12,
   },
@@ -293,7 +323,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   aboutTitle: {
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Geist_700Bold',
     fontSize: 24,
   },
   aboutVersion: {
@@ -310,7 +340,7 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   aboutFooter: {
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Geist_700Bold',
     fontSize: 18,
   },
 });

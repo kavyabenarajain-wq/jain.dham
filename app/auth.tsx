@@ -91,14 +91,14 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
   appName: {
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Geist_700Bold',
     fontSize: 24,
   },
   middleSection: {
     marginBottom: 48,
   },
   heading: {
-    fontFamily: 'Poppins-Bold',
+    fontFamily: 'Geist_700Bold',
     fontSize: 28,
     marginBottom: 12,
   },
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   googleButtonText: {
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'Geist_600SemiBold',
     fontSize: 16,
   },
   guestButton: {
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   guestButtonText: {
-    fontFamily: 'Poppins-SemiBold',
+    fontFamily: 'Geist_600SemiBold',
     fontSize: 15,
     color: '#6A9BCC',
   },
