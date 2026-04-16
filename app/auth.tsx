@@ -1,28 +1,42 @@
 import { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Platform, Alert } from 'react-native';
 import { router } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import * as AppleAuthentication from 'expo-apple-authentication';
 import { useAuthStore } from '@/stores/authStore';
 import { useTheme } from '@/context/ThemeContext';
 
 export default function AuthScreen() {
-  const { signInWithGoogle, continueAsGuest, isAuthenticated } = useAuthStore();
-  const { colors } = useTheme();
-  const [signingIn, setSigningIn] = useState(false);
+  const { signInWithGoogle, signInWithApple, continueAsGuest, isAuthenticated } = useAuthStore();
+  const { colors, isDark } = useTheme();
+  const [busy, setBusy] = useState(false);
 
-  // If auth state changes (e.g. after OAuth callback), navigate to tabs
   if (isAuthenticated) {
     router.replace('/(tabs)');
     return null;
   }
 
-  const handleGoogleSignIn = async () => {
-    setSigningIn(true);
+  const handleGoogle = async () => {
+    if (busy) return;
+    setBusy(true);
     try {
       await signInWithGoogle();
-      // Navigation happens via the auth state listener or the check above
-    } catch {
-      setSigningIn(false);
+    } catch (e: any) {
+      Alert.alert('Sign-in failed', e?.message ?? 'Please try again.');
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const handleApple = async () => {
+    if (busy) return;
+    setBusy(true);
+    try {
+      await signInWithApple();
+    } catch (e: any) {
+      Alert.alert('Sign-in failed', e?.message ?? 'Please try again.');
+    } finally {
+      setBusy(false);
     }
   };
 
@@ -48,10 +62,25 @@ export default function AuthScreen() {
       </View>
 
       <View style={styles.bottomSection}>
+        {Platform.OS === 'ios' && AppleAuthentication.isAvailableAsync && (
+          <AppleAuthentication.AppleAuthenticationButton
+            buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
+            buttonStyle={
+              isDark
+                ? AppleAuthentication.AppleAuthenticationButtonStyle.WHITE
+                : AppleAuthentication.AppleAuthenticationButtonStyle.BLACK
+            }
+            cornerRadius={12}
+            style={styles.appleButton}
+            onPress={handleApple}
+          />
+        )}
+
         <TouchableOpacity
           style={[styles.googleButton, { backgroundColor: colors.card, borderColor: colors.border }]}
-          onPress={handleGoogleSignIn}
+          onPress={handleGoogle}
           activeOpacity={0.8}
+          disabled={busy}
         >
           <Ionicons name="logo-google" size={20} color="#4285F4" />
           <Text style={[styles.googleButtonText, { color: colors.text }]}>
@@ -112,6 +141,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     paddingBottom: 60,
+    gap: 12,
+  },
+  appleButton: {
+    width: '100%',
+    height: 50,
   },
   googleButton: {
     flexDirection: 'row',
@@ -129,7 +163,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   guestButton: {
-    marginTop: 20,
+    marginTop: 8,
     paddingVertical: 12,
   },
   guestButtonText: {
@@ -141,6 +175,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Variable',
     fontSize: 12,
     textAlign: 'center',
-    marginTop: 24,
+    marginTop: 12,
   },
 });
